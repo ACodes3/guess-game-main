@@ -1,0 +1,41 @@
+// Client A
+Connected to server
+Received from server: Welcome to Guess a Word! Please enter your password:
+<Enter your password, e.g., "password123">
+Received from server: Welcome! Your client ID is 123
+
+// Now Client A requests a list of possible opponents
+<Enter "REQUEST_OPPONENTS">
+Received from server: AVAILABLE_OPPONENTS 124, 125, 126
+
+// Client A requests a match with opponent 124, specifying a word to guess
+<Enter "REQUEST_MATCH 124 myWord">
+Received from server: MATCH_CONFIRMED 123 myWord
+
+// Meanwhile, on Client B
+Connected to server
+Received from server: Welcome to Guess a Word! Please enter your password:
+<Enter your password, e.g., "password123">
+Received from server: Welcome! Your client ID is 124
+
+// Client B requests a list of possible opponents
+<Enter "REQUEST_OPPONENTS">
+Received from server: AVAILABLE_OPPONENTS 123, 125, 126
+
+// Client B accepts the match with opponent 123
+<Enter "REQUEST_MATCH 123 theirWord">
+Received from server: MATCH_CONFIRMED 124 theirWord
+
+// Back to Client A
+Received from server: GUESS_PROGRESS 124 someGuess
+<Enter "HINT Here is a hint for you">
+
+// Back to Client B
+Received from server: HINT 123 Here is a hint for you
+
+// And so on...
+
+// The match ends when one of the clients guesses the word or gives up
+// For example, Client B guesses the word
+<Enter "GUESS correctWord">
+Received from server: MATCH_END 124 GUESSED_WORD
