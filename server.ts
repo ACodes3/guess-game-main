@@ -11,7 +11,7 @@ interface Client {
 const server = net.createServer();
 const clients: Client[] = [];
 // Unix socket path
-const unixSocketPath = '/tmp/guess_a_word.sock';
+//const unixSocketPath = '/tmp/guess_a_word.sock';
 
 server.on('connection', (socket) => {
   console.log('Client connected');
@@ -192,6 +192,6 @@ server.on('connection', (socket) => {
 
 const PORT = 3000;
 // Listen on both Unix socket and TCP port
-server.listen(unixSocketPath);
+//server.listen(unixSocketPath);
 server.listen(PORT);
 console.log(`Server listening on Unix socket: ${"unixSocketPath"} and TCP port: ${PORT}`);
